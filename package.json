@@ -1,0 +1,26 @@
+{
+  "name": "pve-network-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "lucide-react": "^1.27.0",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "26.1.1",
+    "@types/react": "19.2.17",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "^16.0.0",
+    "postcss": "^8.5.23",
+    "tailwindcss": "^4.3.3"
+  }
+}

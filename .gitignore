@@ -1,0 +1,9 @@
+.DS_Store
+.next/
+node_modules/
+scripts/node_modules
+.codex-artifacts/
+outputs/
+.env.local
+.env*.local
+*.log

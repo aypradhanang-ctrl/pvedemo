@@ -1,0 +1,130 @@
+import Image from "next/image";
+import Link from "next/link";
+
+import SectionHeading from "@/components/SectionHeading";
+import SiteFrame from "@/components/SiteFrame";
+import { upcomingEvents } from "@/data/events";
+
+const milestones = [
+  "Founded in 2006 with a focus on entertainment and live event experiences",
+  "Expanded into large-scale concerts, destination events, and brand partnerships",
+  "Built an audience reputation across Nepal and international diaspora markets",
+];
+
+export default function AboutPage() {
+  return (
+    <SiteFrame countdownEvents={upcomingEvents}>
+      <section className="bg-neutral-950 px-5 pb-24 pt-[150px] lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div>
+            <SectionHeading
+              eyebrow="About PVE"
+              title="A long-running entertainment network with live-event ambition"
+              description="Explore the story, scale, services, and experience behind PVE Network."
+            />
+
+            <div className="mt-8 space-y-4">
+              {milestones.map((item) => (
+                <div key={item} className="border border-white/10 bg-white/5 p-5 text-sm leading-7 text-white/70">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="relative min-h-[560px] overflow-hidden border border-white/10">
+            <Image
+              src="/images/notable-1.jpg"
+              alt="PVE brand imagery"
+              fill
+              priority
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent" />
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" className="bg-black px-5 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Company portfolio"
+            title="A workflow for brand authority, not just event promotion"
+            description="PVE Network brings together entertainment, touring, production, partnerships, and large-scale live experiences under one brand."
+          />
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              "300+ events across 40+ cities",
+              "Artist management, touring, launches, and international shows",
+              "Corporate activations, live entertainment, and cultural destination events",
+            ].map((item) => (
+              <div key={item} className="border border-white/10 bg-white/5 p-6 text-sm leading-7 text-white/65">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="services" className="bg-neutral-900 px-5 py-24 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeading
+            eyebrow="Services"
+            title="The business needs more than one reason to be contacted"
+            description="These service pillars help the site support brand authority, lead generation, and collaboration requests."
+          />
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            {[
+              "Artist management",
+              "National and international tours",
+              "Corporate event production",
+              "Festival and concert strategy",
+            ].map((item) => (
+              <div key={item} className="border border-white/10 bg-black/30 p-6 text-xl font-black uppercase tracking-tight text-white">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="bg-black px-5 py-24 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-2">
+          <div>
+            <SectionHeading
+              eyebrow="FAQ"
+              title="Questions visitors are likely to have early"
+              description="A few helpful answers about who we are, what we do, and where to go next."
+            />
+          </div>
+
+          <div className="space-y-4">
+            {[
+              ["What does PVE do?", "PVE operates across entertainment, artist management, live events, tours, and sponsor-ready production formats."],
+              ["Who is this site for?", "Audiences, sponsors, artists, organizers, and brand partners can all use the site as a starting point."],
+              ["Where should visitors go next?", "Explore upcoming events, discover sponsorship opportunities, catch the latest updates, or contact the team directly."],
+            ].map(([question, answer]) => (
+              <div key={question} className="border border-white/10 bg-white/5 p-5">
+                <h3 className="text-xl font-black uppercase tracking-tight text-white">
+                  {question}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-white/65">{answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-7xl">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-3 bg-red-600 px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-500"
+          >
+            Contact PVE
+          </Link>
+        </div>
+      </section>
+    </SiteFrame>
+  );
+}
