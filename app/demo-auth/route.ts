@@ -30,14 +30,17 @@ export async function POST(request: Request) {
   const demoSecret = process.env.DEMO_SESSION_SECRET;
 
   if (!demoPassword || !demoSecret) {
-    return NextResponse.redirect(new URL("/demo-login?error=config", request.url));
+    return NextResponse.redirect(
+      new URL("/demo-login?error=config", request.url),
+      { status: 303 },
+    );
   }
 
   if (!safeEquals(submittedPassword, demoPassword)) {
     const invalidUrl = new URL("/demo-login", request.url);
     invalidUrl.searchParams.set("error", "invalid");
     invalidUrl.searchParams.set("next", nextPath);
-    return NextResponse.redirect(invalidUrl);
+    return NextResponse.redirect(invalidUrl, { status: 303 });
   }
 
   const token = createToken(demoPassword, demoSecret);
@@ -51,5 +54,7 @@ export async function POST(request: Request) {
   });
 
   const destination = nextPath.startsWith("/") ? nextPath : "/";
-  return NextResponse.redirect(new URL(destination, request.url));
+  return NextResponse.redirect(new URL(destination, request.url), {
+    status: 303,
+  });
 }
