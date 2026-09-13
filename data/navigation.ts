@@ -91,10 +91,10 @@ export const navigationMenus: Record<
     ],
     featured: {
       eyebrow: "Featured production",
-      title: "Project One Legacy Night",
-      subtitle: "A landmark Nepali rock collaboration",
+      title: "Explore the event archive",
+      subtitle: "Concerts and social initiatives since 2006",
       image: "/images/notable-2.jpg",
-      href: "/events/project-one-legacy-night",
+      href: "/events/past",
     },
   },
 

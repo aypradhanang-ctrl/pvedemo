@@ -1,3 +1,5 @@
+import { verifiedArchive } from "./archive";
+
 export type EventItem = {
   id: number;
   slug: string;
@@ -15,6 +17,8 @@ export type EventItem = {
   description?: string;
   featured?: boolean;
   soldOut?: boolean;
+  artists?: string;
+  sourceUrl?: string;
 };
 
 export const upcomingEvents: EventItem[] = [
@@ -72,59 +76,7 @@ export const upcomingEvents: EventItem[] = [
   },
 ];
 
-export const pastEvents: EventItem[] = [
-  {
-    id: 4,
-    slug: "project-one-legacy-night",
-    title: "Project One Legacy Night",
-    date: "8 November 2025",
-    shortDate: "08 NOV",
-    time: "6:00 PM",
-    startsAt: "2025-11-08T18:00:00+05:45",
-    location: "Kathmandu, Nepal",
-    city: "Kathmandu",
-    country: "Nepal",
-    image: "/images/notable-2.jpg",
-    category: "Concert",
-    price: "Completed",
-    description:
-      "A packed Kathmandu production that blended nostalgia, live musicianship, and large-crowd energy.",
-  },
-  {
-    id: 5,
-    slug: "himalayan-cultural-evening",
-    title: "Himalayan Cultural Evening",
-    date: "22 March 2026",
-    shortDate: "22 MAR",
-    time: "4:30 PM",
-    startsAt: "2026-03-22T16:30:00+05:45",
-    location: "Kathmandu, Nepal",
-    city: "Kathmandu",
-    country: "Nepal",
-    image: "/images/event-2.jpg",
-    category: "Cultural",
-    price: "Completed",
-    description:
-      "A cultural showcase mixing contemporary presentation with traditional performance storytelling.",
-  },
-  {
-    id: 6,
-    slug: "pokhara-live-sessions",
-    title: "Pokhara Live Sessions",
-    date: "16 May 2026",
-    shortDate: "16 MAY",
-    time: "5:00 PM",
-    startsAt: "2026-05-16T17:00:00+05:45",
-    location: "Pokhara, Nepal",
-    city: "Pokhara",
-    country: "Nepal",
-    image: "/images/event-3.jpg",
-    category: "Concert",
-    price: "Completed",
-    description:
-      "An outdoor live-music experience in Pokhara with a travel-friendly atmosphere.",
-  },
-];
+export const pastEvents: EventItem[] = verifiedArchive;
 
 export const events: EventItem[] = [
   ...upcomingEvents,

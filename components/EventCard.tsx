@@ -20,12 +20,12 @@ export default function EventCard({
         className="group grid gap-4 border border-white/10 bg-white/5 p-4 transition hover:border-white/25 hover:bg-white/[0.08] sm:grid-cols-[160px_minmax(0,1fr)]"
       >
         <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
+          {event.image ? <Image
             src={event.image}
             alt={event.title}
             fill
             className="object-cover transition duration-500 group-hover:scale-105"
-          />
+          /> : <div className="flex h-full items-center justify-center bg-red-950 p-4 text-center font-black">{event.title}</div>}
         </div>
 
         <div className="min-w-0">
@@ -64,12 +64,12 @@ export default function EventCard({
         className="block"
       >
         <div className="relative aspect-[4/5] overflow-hidden">
-          <Image
+          {event.image ? <Image
             src={event.image}
             alt={event.title}
             fill
             className="object-cover transition duration-700 group-hover:scale-105"
-          />
+          /> : <div className="flex h-full items-center justify-center bg-gradient-to-br from-red-950 to-neutral-950 p-8 text-center text-4xl font-black">{event.title}</div>}
 
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 

@@ -34,6 +34,35 @@ export default async function EventDetailPage({
     notFound();
   }
 
+  if (event.sourceUrl) {
+    return (
+      <SiteFrame countdownEvents={upcomingEvents}>
+        <section className="bg-gradient-to-br from-red-950 to-neutral-950 px-5 pb-20 pt-40">
+          <div className="mx-auto max-w-7xl">
+            <Link href="/events/past" className="text-sm text-white/70">Back to event archive</Link>
+            <p className="mt-10 text-sm uppercase tracking-widest text-red-400">Past event · {event.date}</p>
+            <h1 className="mt-5 max-w-4xl text-5xl font-black uppercase sm:text-7xl">{event.title}</h1>
+            <p className="mt-6 text-white/70">{event.location}</p>
+          </div>
+        </section>
+        <section className="mx-auto grid max-w-7xl gap-12 px-5 py-20 lg:grid-cols-[2fr_1fr]">
+          <div>
+            <SectionHeading eyebrow="From our history" title="About the event" description={event.description} />
+            <h2 className="mt-10 text-2xl font-black uppercase">Artist lineup</h2>
+            <p className="mt-4 leading-8 text-white/70">{event.artists}</p>
+          </div>
+          <aside className="h-fit border border-white/15 p-8">
+            <h2 className="text-xl font-bold">Event record</h2>
+            <p className="mt-5">{event.date}</p>
+            <p className="mt-3 text-white/70">{event.location}</p>
+            <p className="mt-5 text-sm text-white/50">This event has concluded.</p>
+            <Link href="/events" className="mt-6 inline-block bg-red-600 px-5 py-3 font-bold">Explore upcoming events</Link>
+          </aside>
+        </section>
+      </SiteFrame>
+    );
+  }
+
   const relatedEvents = events
     .filter((item) => item.slug !== event.slug)
     .slice(0, 3);
