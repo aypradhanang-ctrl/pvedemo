@@ -126,10 +126,10 @@ export const navigationMenus: Record<
     ],
     featured: {
       eyebrow: "Latest gallery",
-      title: "Inside a PVE Production",
-      subtitle: "Behind the scenes",
-      image: "/images/notable-2.jpg",
-      href: "/gallery",
+      title: "Sajjan Raj Vaidya in Gangtok",
+      subtitle: "Explore the photo album",
+      image: "/images/gallery/sajjan-raj-vaidya-gangtok/cover.webp",
+      href: "/gallery/sajjan-raj-vaidya-gangtok",
     },
   },
 
