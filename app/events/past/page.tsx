@@ -10,8 +10,8 @@ export default function PastEventsPage() {
     <SiteFrame countdownEvents={upcomingEvents}>
       <section className="relative min-h-[520px] overflow-hidden">
         <Image
-          src="/assets/past-events.jpg"
-          alt="Past PVE events"
+          src="/images/gallery/sajjan-raj-vaidya-siliguri/cover.webp"
+          alt="Live photography from Sajjan Raj Vaidya in Siliguri"
           fill
           priority
           className="object-cover"
@@ -21,7 +21,7 @@ export default function PastEventsPage() {
           <SectionHeading
             eyebrow="Archive"
             title="Past events and landmark productions"
-            description="Every event shown here happened before Wednesday, July 29, 2026, giving the site a clear historical archive alongside the live calendar."
+            description="Revisit concerts and social initiatives from PVE's history."
           />
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function PastEventsPage() {
             <SectionHeading
               eyebrow="Event archive"
               title="Built show by show"
-              description="These pages help the brand feel established by showing the kinds of experiences PVE has already delivered."
+              description="Explore the artists, places and stories behind our past productions."
             />
             <p className="text-sm text-white/45">
               Showing {pastEvents.length} past events

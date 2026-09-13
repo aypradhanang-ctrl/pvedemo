@@ -6,9 +6,9 @@ import SiteFrame from "@/components/SiteFrame";
 import { upcomingEvents } from "@/data/events";
 
 const milestones = [
-  "Founded in 2006 with a focus on entertainment and live event experiences",
-  "Expanded into large-scale concerts, destination events, and brand partnerships",
-  "Built an audience reputation across Nepal and international diaspora markets",
+  "2006-2015: Positive Vibes established its roots in live music and socially responsible entertainment.",
+  "2016-2021: Bandwagon by Positive Vibes expanded nationwide touring and helped bring Project One together.",
+  "2021 onwards: PVE Network continued its international touring and corporate event work.",
 ];
 
 export default function AboutPage() {
@@ -19,8 +19,8 @@ export default function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="About PVE"
-              title="A long-running entertainment network with live-event ambition"
-              description="Explore the story, scale, services, and experience behind PVE Network."
+              title="Connecting artists and audiences since 2006"
+              description="Founded by Bikesh Kayastha, Positive Vibes Entertainment (PVE) Network is a Kathmandu-based entertainment company working across live events, artist management and touring."
             />
 
             <div className="mt-8 space-y-4">
@@ -34,8 +34,8 @@ export default function AboutPage() {
 
           <div className="relative min-h-[560px] overflow-hidden border border-white/10">
             <Image
-              src="/images/notable-1.jpg"
-              alt="PVE brand imagery"
+              src="/images/gallery/chill-music-fest-kathmandu/cover.webp"
+              alt="Band performing at Chill Music Fest in Kathmandu"
               fill
               priority
               className="object-cover"
@@ -49,7 +49,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Company portfolio"
-            title="A workflow for brand authority, not just event promotion"
+            title="From Nepal to stages around the world"
             description="PVE Network brings together entertainment, touring, production, partnerships, and large-scale live experiences under one brand."
           />
 
@@ -71,8 +71,8 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Services"
-            title="The business needs more than one reason to be contacted"
-            description="These service pillars help the site support brand authority, lead generation, and collaboration requests."
+            title="From the first idea to the final encore"
+            description="Artist management, touring, technical production and brand partnerships are at the heart of PVE's work."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -95,16 +95,16 @@ export default function AboutPage() {
           <div>
             <SectionHeading
               eyebrow="FAQ"
-              title="Questions visitors are likely to have early"
+              title="Get to know PVE"
               description="A few helpful answers about who we are, what we do, and where to go next."
             />
           </div>
 
           <div className="space-y-4">
             {[
-              ["What does PVE do?", "PVE operates across entertainment, artist management, live events, tours, and sponsor-ready production formats."],
-              ["Who is this site for?", "Audiences, sponsors, artists, organizers, and brand partners can all use the site as a starting point."],
-              ["Where should visitors go next?", "Explore upcoming events, discover sponsorship opportunities, catch the latest updates, or contact the team directly."],
+              ["What does PVE do?", "PVE works across artist management, live events, touring, technical production and brand partnerships."],
+              ["Where is PVE based?", "PVE is based in Kathmandu, Nepal, with experience delivering events across Nepal and international markets."],
+              ["Where can I see past work?", "Browse the event archive for past productions and the gallery for live photographs."],
             ].map(([question, answer]) => (
               <div key={question} className="border border-white/10 bg-white/5 p-5">
                 <h3 className="text-xl font-black uppercase tracking-tight text-white">

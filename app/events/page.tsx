@@ -33,8 +33,8 @@ export default function EventsPage() {
     <SiteFrame countdownEvents={upcomingEvents}>
       <section className="relative min-h-[640px] overflow-hidden">
         <Image
-          src="/assets/events-screen.jpg"
-          alt="PVE upcoming events"
+          src="/images/gallery/sajjan-raj-vaidya-gangtok/cover.webp"
+          alt="Live photography from Sajjan Raj Vaidya in Gangtok"
           fill
           priority
           className="object-cover"
@@ -43,15 +43,15 @@ export default function EventsPage() {
         <div className="relative mx-auto flex min-h-[640px] max-w-7xl items-end px-5 pb-20 pt-[150px] lg:px-8">
           <div className="max-w-4xl">
             <SectionHeading
-              eyebrow="Upcoming calendar"
-              title="Upcoming events designed for discovery, decision, and ticket action"
-              description="Scan the calendar, explore event types, and move directly into the details that matter."
+              eyebrow="Upcoming events"
+              title="Find your next live experience"
+              description="Concerts, festivals and live performances from PVE Network."
             />
 
             <div className="mt-8 flex flex-wrap gap-4 text-sm text-white/75">
               <span className="inline-flex items-center gap-2 border border-white/15 bg-black/30 px-4 py-3">
                 <CalendarDays size={16} className="text-red-500" />
-                {upcomingEvents.length} live upcoming events
+                {upcomingEvents.length > 0 ? `${upcomingEvents.length} upcoming events` : "Event announcements to follow"}
               </span>
               <span className="inline-flex items-center gap-2 border border-white/15 bg-black/30 px-4 py-3">
                 <MapPin size={16} className="text-red-500" />
@@ -68,7 +68,7 @@ export default function EventsPage() {
             <SectionHeading
               eyebrow="Book and browse"
               title="All upcoming PVE experiences"
-              description="Each event card acts as the next step in the user journey: learn more, understand the format, then move into the event page."
+              description="Find dates, venues and event details as shows are announced."
             />
 
             <Link
@@ -76,11 +76,18 @@ export default function EventsPage() {
               className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-red-500"
             >
               <Ticket size={16} />
-              See ticket flow
+              Ticket information
             </Link>
           </div>
 
           <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+            {upcomingEvents.length === 0 && (
+              <div className="border border-white/10 bg-white/5 p-8 md:col-span-2 xl:col-span-3">
+                <h2 className="text-2xl font-black uppercase">No upcoming events announced yet</h2>
+                <p className="mt-4 text-sm leading-7 text-white/65">Check back for confirmed dates and admission details. Until then, explore performances from our past events.</p>
+                <Link href="/gallery" className="mt-5 inline-block font-bold text-red-400">Explore the gallery &rarr;</Link>
+              </div>
+            )}
             {upcomingEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
@@ -107,6 +114,9 @@ export default function EventsPage() {
               </p>
 
               <div className="mt-6 space-y-3">
+                {!upcomingEvents.some((event) => event.category === type.match) && (
+                  <p className="text-sm text-white/50">No events announced in this category yet.</p>
+                )}
                 {upcomingEvents
                   .filter((event) => event.category === type.match)
                   .map((event) => (
@@ -127,16 +137,16 @@ export default function EventsPage() {
       <section id="ticketing" className="bg-neutral-900 px-5 py-24 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
-            eyebrow="Ticket workflow"
-            title="A simpler visitor journey from discovery to purchase intent"
-            description="A clear path from discovering the event to taking the next step."
+            eyebrow="Ticket information"
+            title="Before you book"
+            description="Ticket sales are not currently open on this website. Confirmed booking information will be published with each event."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {[
-              ["1. Discover", "Scan upcoming events, categories, dates, and destinations from one page."],
-              ["2. Decide", "Open the event page to review timing, venue, ticket status, FAQs, and things to know."],
-              ["3. Convert", "Use ticket and enquiry actions to move into booking, sponsor interest, or customer support."],
+              ["1. Find your event", "Explore the announced shows and choose the performance you want to attend."],
+              ["2. Check the details", "Review the date, venue, admission information and published event rules."],
+              ["3. Plan your visit", "Use the event's confirmed booking information when tickets become available."],
             ].map(([title, text]) => (
               <article key={title} className="border border-white/10 bg-black/30 p-6">
                 <h3 className="text-2xl font-black uppercase tracking-tight text-white">

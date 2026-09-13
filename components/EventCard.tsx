@@ -108,10 +108,10 @@ export default function EventCard({
           </p>
 
           <div className="space-y-2 text-sm text-white/55">
-            <p className="flex items-center gap-2">
+            {event.time !== "Not recorded" && <p className="flex items-center gap-2">
               <Clock3 size={16} className="text-red-500" />
               {event.time}
-            </p>
+            </p>}
 
             <p className="flex items-center gap-2">
               <MapPin size={16} className="text-red-500" />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import SectionHeading from "@/components/SectionHeading";
 import SiteFrame from "@/components/SiteFrame";
@@ -13,10 +14,17 @@ export default function NewsPage() {
           <SectionHeading
             eyebrow="Newsroom"
             title="Updates, announcements, and production stories"
-            description="The news data is now shared and reusable, so the homepage and newsroom stay aligned."
+            description="News from PVE Network, from event announcements to stories behind the performances."
           />
 
           <div className="mt-12 space-y-6">
+            {newsItems.length === 0 && (
+              <div className="border border-white/10 bg-white/5 p-8">
+                <h2 className="text-2xl font-black uppercase">Updates to follow</h2>
+                <p className="mt-4 max-w-xl text-sm leading-7 text-white/65">There are no news announcements published here yet. Explore our event photographs and past productions in the meantime.</p>
+                <Link href="/gallery" className="mt-5 inline-block font-bold text-red-400">Explore the gallery &rarr;</Link>
+              </div>
+            )}
             {newsItems.map((item, index) => (
               <article
                 key={item.slug}

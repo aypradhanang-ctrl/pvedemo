@@ -13,7 +13,7 @@ const sponsorshipPillars = [
   },
   {
     title: "Experience design",
-    text: "Create activations that feel native to the event rather than bolted on at the last minute.",
+    text: "Bring your brand into the live experience through event activations and audience engagement.",
   },
 ];
 
@@ -24,8 +24,8 @@ export default function SponsorshipsPage() {
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Sponsorships"
-            title="A sponsor journey designed around event-specific opportunities"
-            description="Explore sponsorship packages, event opportunities, downloadable materials, and direct partnership enquiries."
+            title="Bring your brand closer to the music"
+            description="Explore PVE's work across live entertainment, touring and brand partnerships."
           />
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -42,13 +42,13 @@ export default function SponsorshipsPage() {
           <div className="mt-16 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
             <div className="border border-white/10 bg-white/5 p-8">
               <p className="text-[10px] font-black uppercase tracking-[0.22em] text-red-500">
-                Event sponsorship flow
+                Event partnerships
               </p>
               <h2 className="mt-4 text-4xl font-black uppercase leading-none tracking-[-0.04em] text-white">
-                Event flyer, sponsorship deck, then enquiry.
+                Partnerships built around each event.
               </h2>
               <p className="mt-5 text-sm leading-7 text-white/65">
-                Discover each event opportunity, review sponsorship materials, and connect with the team to start the conversation.
+                Sponsorship opportunities vary by event. Event packages and downloadable decks are not published yet.
               </p>
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -57,10 +57,10 @@ export default function SponsorshipsPage() {
                     Flyer
                   </p>
                   <h3 className="mt-3 text-2xl font-black uppercase tracking-tight text-white">
-                    Clickable event showcase
+                    Event opportunities
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-white/65">
-                    Designed to open event-specific opportunity information and past-event gallery context.
+                    Event flyers and confirmed partnership opportunities will appear here as they are announced.
                   </p>
                 </div>
 
@@ -69,19 +69,20 @@ export default function SponsorshipsPage() {
                     Deck
                   </p>
                   <h3 className="mt-3 text-2xl font-black uppercase tracking-tight text-white">
-                    Downloadable sponsorship PDF
+                    Sponsorship packages
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-white/65">
-                    Positioned for event-wise package details, deliverables, and premium brand placement summaries.
+                    Package details and sponsorship decks will be available here once released.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="border border-white/10 bg-black/30 p-8">
+            <fieldset disabled aria-describedby="sponsor-status" className="min-w-0 border border-white/10 bg-black/30 p-8">
               <p className="text-[10px] font-black uppercase tracking-[0.22em] text-red-500">
                 Sponsor enquiry
               </p>
+              <p id="sponsor-status" className="mt-4 text-sm leading-7 text-white/65">Online sponsor enquiries are not available yet. This form is not accepting messages.</p>
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 <Input label="Brand name" />
                 <Input label="Contact email" />
@@ -98,9 +99,9 @@ export default function SponsorshipsPage() {
               </label>
 
               <button className="mt-5 bg-red-600 px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-500">
-                Send sponsor enquiry
+                Enquiries not open yet
               </button>
-            </div>
+            </fieldset>
           </div>
         </div>
       </section>

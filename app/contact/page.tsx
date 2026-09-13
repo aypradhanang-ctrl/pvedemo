@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import SiteFrame from "@/components/SiteFrame";
 import { upcomingEvents } from "@/data/events";
+import { contactDetails } from "@/data/contact";
 
 export default function ContactPage() {
   return (
@@ -17,18 +18,19 @@ export default function ContactPage() {
             />
 
             <div className="mt-8 space-y-5 text-sm text-white/70">
-              <p className="flex items-center gap-3">
+              {contactDetails.email && <p className="flex items-center gap-3">
                 <Mail size={18} className="text-red-500" />
-                info@pvenetwork.com
-              </p>
-              <p className="flex items-center gap-3">
+                <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
+              </p>}
+              {contactDetails.phone && <p className="flex items-center gap-3">
                 <Phone size={18} className="text-red-500" />
-                +977 01 555 0000
-              </p>
+                <a href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}>{contactDetails.phone}</a>
+              </p>}
               <p className="flex items-center gap-3">
                 <MapPin size={18} className="text-red-500" />
-                Kathmandu, Nepal
+                {contactDetails.location}
               </p>
+              {!contactDetails.email && !contactDetails.phone && <p className="leading-7">Public contact details will be listed here when available.</p>}
             </div>
 
             <div className="mt-10 space-y-4">
@@ -41,7 +43,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="border border-white/10 bg-black/30 p-8">
+          <fieldset disabled aria-describedby="contact-status" className="min-w-0 border border-white/10 bg-black/30 p-8">
+            <p id="contact-status" className="mb-6 text-sm leading-7 text-white/65">Online enquiries are not available yet. This form is not accepting messages.</p>
             <div className="grid gap-5 sm:grid-cols-2">
               <Input label="Name" />
               <Input label="Email" />
@@ -61,9 +64,9 @@ export default function ContactPage() {
               type="button"
               className="mt-5 bg-red-600 px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-500"
             >
-              Send enquiry
+              Enquiries not open yet
             </button>
-          </div>
+          </fieldset>
         </div>
       </section>
     </SiteFrame>

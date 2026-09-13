@@ -14,7 +14,7 @@ import {
 import EventCard from "@/components/EventCard";
 import SectionHeading from "@/components/SectionHeading";
 import SiteFrame from "@/components/SiteFrame";
-import { events, getEventBySlug, upcomingEvents } from "@/data/events";
+import { events, getEventBySlug, pastEvents, upcomingEvents } from "@/data/events";
 
 export function generateStaticParams() {
   return events.map((event) => ({
@@ -34,7 +34,7 @@ export default async function EventDetailPage({
     notFound();
   }
 
-  if (event.sourceUrl) {
+  if (pastEvents.some((item) => item.slug === event.slug)) {
     return (
       <SiteFrame countdownEvents={upcomingEvents}>
         <section className="bg-gradient-to-br from-red-950 to-neutral-950 px-5 pb-20 pt-40">
@@ -70,21 +70,15 @@ export default async function EventDetailPage({
   const mapQuery = encodeURIComponent(event.location);
 
   const schedule = [
-    ["Doors open", "4:30 PM"],
+    ["Doors open", event.doorsOpen ?? "To be announced"],
     ["Show starts", event.time],
-    ["Expected end", "10:30 PM"],
+    ["Expected end", event.endsAt ?? "To be announced"],
   ];
 
-  const thingsToKnow = [
-    "Carry a valid ticket confirmation and a government-issued ID at entry.",
-    "Arrive early for security checks, entry queues, and venue orientation.",
-    "Venue instructions, rules, and QR-based check-in details will be shared after purchase.",
-  ];
+  const thingsToKnow = event.rules?.length ? event.rules : ["Entry rules and attendee information have not been published yet. Check back before making travel plans."];
 
-  const faqItems = [
-    ["Where will ticket details appear?", "Booking confirmations, QR delivery, and event-day instructions will be sent to the buyer after purchase."],
-    ["Is venue information easy to access?", "Yes. Timing, venue directions, and event essentials are all easy to find in one place."],
-    ["Can I contact the organizer?", "Yes. Every event page includes a direct contact path for ticketing, partnerships, and general support."],
+  const faqItems = event.faq?.length ? event.faq.map(({ question, answer }) => [question, answer]) : [
+    ["Where can I find more information?", "Additional event information will appear on this page when it is announced."],
   ];
 
   return (
@@ -129,7 +123,7 @@ export default async function EventDetailPage({
                 className="inline-flex items-center gap-3 bg-red-600 px-6 py-4 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-500"
               >
                 <Ticket size={16} />
-                Ticket and support flow
+                Contact information
               </Link>
 
               <a
@@ -150,8 +144,8 @@ export default async function EventDetailPage({
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <SectionHeading
-              eyebrow="Event workflow"
-              title="What attendees need before they book and before they arrive"
+              eyebrow="Plan your visit"
+              title="Your guide to the show"
               description="Everything you need to know before booking and before arriving at the venue."
             />
 
@@ -217,9 +211,9 @@ export default async function EventDetailPage({
                 <p className="mt-2 font-semibold text-white">{event.location}</p>
               </div>
               <div>
-                <p className="text-white/40">Artist and event content</p>
+                <p className="text-white/40">Organizer</p>
                 <p className="mt-2 font-semibold text-white">
-                  Artist stories, media, gallery highlights, setlist details, and organizer information all live here.
+                  {event.organizer ?? "Organizer details to be announced."}
                 </p>
               </div>
             </div>
@@ -228,7 +222,7 @@ export default async function EventDetailPage({
               href="/contact"
               className="mt-8 inline-flex items-center gap-3 bg-red-600 px-5 py-4 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-500"
             >
-              Ask about this event
+              Contact information
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -245,10 +239,10 @@ export default async function EventDetailPage({
               </p>
             </div>
             <h2 className="mt-4 text-3xl font-black uppercase tracking-tight text-white">
-              A dedicated area for artist biography and listening links
+              {event.artists ?? "Artist details to follow"}
             </h2>
             <p className="mt-4 text-sm leading-7 text-white/65">
-              Discover artist stories, background, and listening links connected to each event.
+              {event.artistBio ?? "Artist biographies and listening links have not been published for this event yet."}
             </p>
           </div>
 
@@ -277,8 +271,8 @@ export default async function EventDetailPage({
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="More events"
-            title="Keep exploring the calendar"
-            description="The event detail route now works as a stronger bridge between discovery, conversion, and ongoing browsing."
+            title="More from PVE"
+            description="Explore more performances and productions from PVE Network."
           />
 
           <div className="mt-12 grid gap-7 md:grid-cols-2 xl:grid-cols-3">

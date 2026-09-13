@@ -21,7 +21,7 @@ export default function SiteFrame({
   const [navigationOpen, setNavigationOpen] = useState(false);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-neutral-950 pb-[112px] text-white sm:pb-[96px]">
+    <main className={`min-h-screen overflow-x-hidden bg-neutral-950 text-white ${countdownEvents.length > 0 ? "pb-[112px] sm:pb-[96px]" : ""}`}>
       <Header
         mobileMenuOpen={mobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}

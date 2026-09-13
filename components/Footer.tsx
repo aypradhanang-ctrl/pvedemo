@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contactDetails } from "@/data/contact";
 
 const exploreLinks = [
   { label: "Upcoming Events", href: "/events" },
@@ -53,15 +54,14 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-bold uppercase tracking-[0.2em]">
-              Social and reach
+              Stay connected
             </h3>
 
             <div className="mt-6 space-y-3 text-sm text-white/55">
-              <p>Facebook / Instagram / Threads / TikTok</p>
-              <p>X / WhatsApp / Email</p>
-              <p>info@pvenetwork.com</p>
-              <p>Kathmandu, Nepal</p>
-              <p>Partnerships, production, ticket, and event enquiries welcome.</p>
+              <p>{contactDetails.location}</p>
+              {contactDetails.email && <a className="block" href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>}
+              {contactDetails.phone && <a className="block" href={`tel:${contactDetails.phone.replace(/\s/g, "")}`}>{contactDetails.phone}</a>}
+              <p>Explore live photography, past productions and the story of PVE Network.</p>
             </div>
           </div>
         </div>
